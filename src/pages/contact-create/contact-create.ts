@@ -23,12 +23,13 @@ export class ContactCreatePage {
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad ContactCreatePage');
+
   }
 
   addContact() {
 
     this.contactModel.status = "publish";
+    delete this.contactModel.id;
     
     this._contactService.createContact(this.contactModel)
       .subscribe(response => {

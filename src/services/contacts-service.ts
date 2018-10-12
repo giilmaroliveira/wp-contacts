@@ -17,8 +17,16 @@ export class ContactsServiceProvider {
   }
 
   createContact(contact: ContactModel) {
+    let headers = this.createHeaders();
+    return this.http.post(this.api_url, JSON.stringify(contact), { headers: headers });
+  }
 
+  deleteContact(id: number) {
 
+    return this.http.delete(this.api_url + `/${id}`, { headers: this.createHeaders() })
+  }
+
+  createHeaders() : HttpHeaders {
     let token = JSON.parse(localStorage.getItem('wpIonicToken')).token;
 
     let headers = new HttpHeaders({
@@ -26,7 +34,7 @@ export class ContactsServiceProvider {
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.post(this.api_url, JSON.stringify(contact), { headers: headers });
+    return headers;
   }
 
 }
