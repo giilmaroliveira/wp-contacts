@@ -13,6 +13,8 @@ import { HomePage } from '../pages/home/home';
 
 // Modules
 import { TabsModule } from '../pages/tabs/tabs.module';
+import { ContactCreatePageModule } from '../pages/contact-create/contact-create.module';
+import { ContactDetailPageModule } from '../pages/contact-detail/contact-detail.module';
 
 //Services
 import { ContactsServiceProvider } from '../services/contacts-service';
@@ -29,7 +31,9 @@ import { AuthServiceProvider } from '../services/auth-service';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     TabsModule,
-    HttpClientModule
+    HttpClientModule,
+    ContactDetailPageModule,
+    ContactCreatePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

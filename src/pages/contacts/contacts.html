@@ -7,12 +7,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>contacts</ion-title>
+    <ion-title>Contacts</ion-title>
   </ion-navbar>
+
+  <ion-buttons end>
+    <button ion-button icon-only (click)="createContact()" >
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-buttons>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <button ion-item *ngFor="let contact of contacts" (click)="showContactsDetails(contact)">
+      {{ contact.contact_name }}
+    </button>
+  </ion-list>
 </ion-content>
