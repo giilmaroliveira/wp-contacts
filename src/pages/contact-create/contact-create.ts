@@ -15,11 +15,18 @@ import { ContactsServiceProvider } from '../../services/contacts-service';
 export class ContactCreatePage {
 
   contactModel: ContactModel = new ContactModel();
+  boolUpdate: boolean = false;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private _contactService: ContactsServiceProvider) {
+
+      let contactParam = this.navParams.get('contact');
+      if (contactParam) {
+        this.contactModel = contactParam;
+        this.boolUpdate = true;
+      }
   }
 
   ionViewDidLoad() {
@@ -28,13 +35,21 @@ export class ContactCreatePage {
 
   addContact() {
 
-    this.contactModel.status = "publish";
-    delete this.contactModel.id;
-    
-    this._contactService.createContact(this.contactModel)
+    if (!this.boolUpdate) {
+
+      this.contactModel.status = "publish";
+      delete this.contactModel.id;
+      
+      this._contactService.createContact(this.contactModel)
+        .subscribe(response => {
+          this.navCtrl.setRoot(ContactsPage);
+        })
+    } else {
+      this._contactService.updateContact(this.contactModel)
       .subscribe(response => {
         this.navCtrl.setRoot(ContactsPage);
       })
+    }
 
   }
 

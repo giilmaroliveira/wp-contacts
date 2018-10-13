@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Adicionar Contato</ion-title>
+    <ion-title>{{ boolUpdate ? 'Editar Contato' : 'Adicionar Contato' }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,6 +18,6 @@
     </ion-item>
   </ion-list>
 
-  <button ion-button block (click)="addContact()">Adicionar</button>
+  <button ion-button block (click)="addContact()">Salvar</button>
 
 </ion-content>

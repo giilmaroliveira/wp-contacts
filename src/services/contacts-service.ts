@@ -17,13 +17,15 @@ export class ContactsServiceProvider {
   }
 
   createContact(contact: ContactModel) {
-    let headers = this.createHeaders();
-    return this.http.post(this.api_url, JSON.stringify(contact), { headers: headers });
+    return this.http.post(this.api_url, JSON.stringify(contact), { headers: this.createHeaders() });
   }
 
   deleteContact(id: number) {
-
     return this.http.delete(this.api_url + `/${id}`, { headers: this.createHeaders() })
+  }
+
+  updateContact(contact: ContactModel) {
+    return this.http.put(this.api_url + `/${contact.id}`, JSON.stringify(contact), { headers: this.createHeaders() });
   }
 
   createHeaders() : HttpHeaders {

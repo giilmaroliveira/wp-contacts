@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { ContactsPage } from '../contacts/contacts';
+import { ContactCreatePage } from '../contact-create/contact-create';
 
 import { ContactModel } from '../../models/contact-model';
 
@@ -29,7 +30,7 @@ export class ContactDetailPage {
   }
 
   editContact(contact) {
-    console.log(contact);
+    this.navCtrl.push(ContactCreatePage, { contact: contact })
   }
 
   showMessage() {
