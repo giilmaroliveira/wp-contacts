@@ -15,10 +15,12 @@ import { HomePage } from '../pages/home/home';
 import { TabsModule } from '../pages/tabs/tabs.module';
 import { ContactCreatePageModule } from '../pages/contact-create/contact-create.module';
 import { ContactDetailPageModule } from '../pages/contact-detail/contact-detail.module';
+import { PostsPageModule } from '../pages/posts/posts.module';
 
 //Services
 import { ContactsServiceProvider } from '../services/contacts-service';
 import { AuthServiceProvider } from '../services/auth-service';
+import { PostsServiceProvider } from '../services/posts-service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { AuthServiceProvider } from '../services/auth-service';
     TabsModule,
     HttpClientModule,
     ContactDetailPageModule,
-    ContactCreatePageModule
+    ContactCreatePageModule,
+    PostsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +50,8 @@ import { AuthServiceProvider } from '../services/auth-service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ContactsServiceProvider,
-    AuthServiceProvider
+    AuthServiceProvider,
+    PostsServiceProvider
   ]
 })
 export class AppModule {}
