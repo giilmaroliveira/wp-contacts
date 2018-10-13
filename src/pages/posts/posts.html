@@ -9,4 +9,19 @@
 
 <ion-content padding>
 
+    <ion-list>
+        <ion-item-sliding *ngFor="let post of postsList">
+          <ion-item>
+            <ion-card>
+                <ion-card-header>
+                {{ post.title.rendered }}
+                </ion-card-header>
+                <ion-card-content>
+                  <div [innerHTML]="post.content.rendered"></div>
+                </ion-card-content>
+              </ion-card>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+
 </ion-content>

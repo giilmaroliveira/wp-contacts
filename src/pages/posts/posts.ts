@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PostsServiceProvider } from '../../services/posts-service';
 
-/**
- * Generated class for the PostsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { PostsServiceProvider } from '../../services/posts-service';
 
 @IonicPage()
 @Component({
@@ -16,11 +10,13 @@ import { PostsServiceProvider } from '../../services/posts-service';
 })
 export class PostsPage {
 
+  postsList;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private _postsService: PostsServiceProvider) {
-      this.getAllPosts
+      this.getAllPosts();
   }
 
   ionViewDidLoad() {
@@ -30,7 +26,7 @@ export class PostsPage {
   getAllPosts() {
     this._postsService.getPosts()
       .subscribe(response => {
-        console.log(response);
+        this.postsList = response;
       })
   }
 
